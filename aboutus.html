@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* Resetting some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #eaf3f9;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #0044cc;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 2em;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header ul li {
+            margin: 0 15px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        header a:hover {
+            color: #00aaff;
+        }
+
+        .about {
+            background: linear-gradient(to bottom, #0072ff, #00c6ff);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .about p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-out 0.5s;
+        }
+
+        .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .member {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .member:hover img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            text-align: center;
+        }
+
+        .member h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .member p {
+            font-size: 1em;
+        }
+
+        footer {
+            background: #0044cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .email-popup {
+            display: none;
+            width: 400px;
+            height: 400px;
+            background: white;
+            border: 2px solid #0044cc;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .email-popup h3 {
+            font-size: 1.8em;
+            color: #0044cc;
+            margin-bottom: 15px;
+        }
+
+        .email-popup p {
+            margin: 10px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Healthcare Team</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="contact-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <p>We are a dedicated team of professionals committed to providing top-notch healthcare solutions. Our goal is to make a positive impact on your health and well-being.</p>
+            <div class="team">
+                <div class="member">
+                    <div class="member-info">
+                        <h3>Gaafar</h3>
+                        <p>Healthcare Specialist</p>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-info">
+                        <h3>Marawan</h3>
+                        <p>Medical Consultant</p>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-info">
+                        <h3>Amin</h3>
+                        <p>Technical Support</p>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-info">
+                        <h3>Farida</h3>
+                        <p>Healthcare Manager</p>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-info">
+                        <h3>Maram</h3>
+                        <p>Health Coordinator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Healthcare Team. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Open a new window with fake emails
+        document.getElementById('contact-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            const emailWindow = window.open('', '', 'width=600,height=400');
+            emailWindow.document.write(`
+                <html>
+                <head>
+                    <title>Contact Us</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            padding: 20px;
+                            color: #333;
+                            background-color: #f4f4f4;
+                        }
+                        h3 {
+                            color: #0044cc;
+                        }
+                        p {
+                            margin: 10px 0;
+                            padding: 10px;
+                            border-bottom: 1px solid #ddd;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h3>Our Emails</h3>
+                    <p><strong>Gaafar:</strong> Responsible for software codes<br><strong>Email:</strong> ga3far970@gmail.com<br><strong>Message:</strong> "Hi Team, I am looking to integrate new features into our healthcare application. Could you provide the latest updates and any API documentation?"</p>
+                    <p><strong>Marawan:</strong> Responsible for complaints<br><strong>Email:</strong> marawan123@example.com<br><strong>Message:</strong> "Dear Support, I am experiencing issues with the scheduling system on your website. It would be helpful if this could be addressed at your earliest convenience."</p>
+                    <p><strong>Amin:</strong> Responsible for health follow-up<br><strong>Email:</strong> amin456@example.com<br><strong>Message:</strong> "Hello, I would like to confirm the details of my recent health check-up. Could you please provide a summary of the results and any follow-up actions required?"</p>
+                    <p><strong>Farida:</strong> Responsible for recruitment<br><strong>Email:</strong> farida291976@gmail.com<br><strong>Message:</strong> "Greetings, We are interested in collaborating with your team for upcoming healthcare projects. Could we schedule a meeting to discuss potential opportunities?"</p>
+                    <p><strong>Maram:</strong> General Question<br><strong>Email:</strong> maram789@example.com<br><strong>Message:</strong> "Hi, I have a few questions about the services you offer and how they can be tailored to meet our specific needs. Can you provide more details or arrange a call?"</p>
+                </body>
+
+                </html>
+            `);
+        });
+    </script>
+</body>
+</html>
